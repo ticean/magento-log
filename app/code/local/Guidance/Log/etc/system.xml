@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <guidancelog translate="label" module="guidance_log">
+            <label>Guidance Log Configuration</label>
+            <tab>advanced</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>952</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <fileappendersettings translate="label" module="guidance_log">
+                    <label>File Appender Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                         <file_appender_log translate="label">
+                            <label>Enable Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_logTypes</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </file_appender_log> 
+                        
+                        <file_appender_type translate="label">                          
+                            <label>Appender Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_fileAppenderOptions</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </file_appender_type> 
+                        <log_filename translate="label">
+                            <label>Name of Log File</label>
+                            <validate>required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Logging file is located in {{base_dir}}/var/log]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </log_filename>
+                        <log_file_size translate="label">
+                            <label>Max File Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Usefull in case of Rolling File Appender]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><file_appender_type>4</file_appender_type></depends>
+                        </log_file_size>
+                        <log_file_maxbackupindex translate="label">
+                            <label>Max Backup Index</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Usefull in case of Rolling File Appender]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><file_appender_type>4</file_appender_type></depends>
+                        </log_file_maxbackupindex>
+                        <file_appender_layout translate="label">
+                            <label>Layout Pattern</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_layoutOptions</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </file_appender_layout> 
+                        <file_layout_pattern translate="label">                          
+                            <label>Conversion Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[This Pattern is used in for LoggerLayoutPattern. Reffer http://logging.apache.org/log4php/docs/appender/layout.html for pattern characters.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><file_appender_layout>LoggerLayoutPattern</file_appender_layout></depends>
+                            <validate>required-entry</validate>
+                        </file_layout_pattern>
+                    </fields>
+                </fileappendersettings>
+                <mailappendersettings translate="label" module="guidance_log">
+                    <label>Mail Appender Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mail_appender_log translate="label">
+                            <label>Enable Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_logTypes</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_appender_log>
+                        <mail_appender_type translate="label">
+                            <label>Appender Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_mailAppenderOptions</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_appender_type> 
+                        <mail_account_from translate="label">
+                            <label>From (Email)</label>
+                            <validate>validate-email</validate>
+                            <comment><![CDATA[Email will be sent using this Email address]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_account_from>
+                        <mail_account_to translate="label">
+                            <label>To (Email)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Log in Email will be sent to this Email address]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>validate-email</validate>
+                        </mail_account_to>
+                        <mail_subject translate="label">
+                            <label>Mail Subject</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </mail_subject>
+                        <mail_smtp_host translate="label">
+                            <label>SMPT Host</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><mail_appender_type>6</mail_appender_type></depends>
+                            <comment><![CDATA[default is what is set in php.ini file. Please note this only works on Windows]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_smtp_host>
+                        <mail_smtp_port translate="label">
+                            <label>SMPT Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[default port is 25. Please note this only works on Windows]]></comment>
+                            <depends><mail_appender_type>6</mail_appender_type></depends>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_smtp_port>
+                        <mail_appender_layout translate="label">
+                            <label>Layout Pattern</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_layoutOptions</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </mail_appender_layout> 
+                        <mail_layout_pattern translate="label">
+                            <label>Conversion Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[This Pattern is used in for LoggerLayoutPattern. Reffer http://logging.apache.org/log4php/docs/appender/layout.html for pattern characters.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><mail_appender_layout>LoggerLayoutPattern</mail_appender_layout></depends>
+                            <validate>required-entry</validate>
+                        </mail_layout_pattern>
+                    </fields>
+                </mailappendersettings>
+                
+                <databaseappendersettings translate="label" module="guidance_log">
+                    <label>Database Appender Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <database_appender_log translate="label">
+                            <label>Enable Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_logTypes</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </database_appender_log>
+                        <database_appender_type translate="label">
+                            <label>Appender Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_databaseAppenderOptions</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </database_appender_type> 
+                        <database_server_url translate="label">
+                            <label>Database Host URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_server_url>
+                        <database_name translate="label">
+                            <label>Database Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_name>
+                        <database_account_username translate="label">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_account_username>
+                        <database_account_password translate="label">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </database_account_password>                             
+                        <database_create_table translate="label">
+                            <label>Create Table</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_yesNo</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Create the table if it does not exist? ("Yes" or "No")]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </database_create_table>
+                        <database_table_name translate="label">
+                            <label>Table Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Name of the table to which log entries should be inserted.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_table_name>
+                        <database_insert_sql translate="label">
+                            <label>Insert SQL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[SQL query used to insert a log event.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_insert_sql>
+                        <database_insert_pattern translate="label">
+                            <label>Insert Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[A comma separated list of LoggerPatternLayout format strings used in insertSql parameter.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <validate>required-entry</validate>
+                        </database_insert_pattern>
+                    </fields>
+                </databaseappendersettings>
+                
+                <phpappendersettings translate="label" module="guidance_log">
+                    <label>PHP Appender Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <php_appender_log translate="label">
+                            <label>Enable Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_logTypes</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </php_appender_log>
+                        <php_appender_type translate="label">
+                            <label>Appender Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_pHPAppendersOptions</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </php_appender_type>        
+                        <php_appender_layout translate="label">
+                            <label>Layout Pattern</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>guidance_log_model_config_layoutOptions</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                            <can_be_empty>1</can_be_empty>
+                        </php_appender_layout> 
+                        <php_layout_pattern translate="label">
+                            <!--<backend_model>guidance_log_model_logData</backend_model>-->
+                            <label>Conversion Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[This Pattern is used in for LoggerLayoutPattern. Reffer http://logging.apache.org/log4php/docs/appender/layout.html for pattern characters.]]></comment>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><php_appender_layout>LoggerLayoutPattern</php_appender_layout></depends>
+                            <validate>required-entry</validate>
+                        </php_layout_pattern>
+                    </fields>
+                </phpappendersettings>
+                
+            </groups>
+        </guidancelog>
+    </sections>
+</config>
